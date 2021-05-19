@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AnimalPage {
 
     WebDriver driver;
-    public AnimalPage(WebDriver driver){
+    public AnimalPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
 

@@ -13,7 +13,7 @@ public class CurrentAnimalPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    public CurrentAnimalPage(WebDriver driver){
+    public CurrentAnimalPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 20);
         PageFactory.initElements(driver, this);
@@ -26,16 +26,16 @@ public class CurrentAnimalPage {
     @FindBy(xpath = "//*[@id=\"Catalog\"]/table/tbody/tr[2]/td[3]")
     WebElement description;
 
-    public String getName(){
+    public String getName() {
         wait.until(ExpectedConditions.elementToBeClickable(addToCart));
         return driver.findElement(By.tagName("h2")).getText();
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description.getText();
     }
 
-    public ShoppingCartPage addToCart(){
+    public ShoppingCartPage addToCart() {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"Catalog\"]/table/tbody/tr[2]/td[5]/a"))).click();
         return new ShoppingCartPage(driver);
     }

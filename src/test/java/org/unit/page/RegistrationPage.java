@@ -52,6 +52,9 @@ public class RegistrationPage {
     @FindBy(name = "newAccount")
     private WebElement saveAccButton;
 
+    @FindBy(xpath = "/html/body/h1")
+    public WebElement exceptionHeader;
+
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -93,8 +96,8 @@ public class RegistrationPage {
     }
 
     public RegistrationPage positiveAccountInformation() {
-        firstName.sendKeys("Bob");
-        lastName.sendKeys("Marley");
+        firstName.sendKeys("Jos");
+        lastName.sendKeys("sdf");
         email.sendKeys("someemail@gmail.com");
         phone.sendKeys("+380992484111");
         address1.sendKeys("st. Pridniprovska 6");
@@ -102,25 +105,25 @@ public class RegistrationPage {
         city.sendKeys("Dnipro");
         state.sendKeys("AND district");
         zip.sendKeys("zip");
-        country.sendKeys("Ukraine");
+        country.sendKeys("UKR");
         return this;
     }
 
     public RegistrationPage negativeAccountInformation() {
-        firstName.sendKeys("Bob");
-        lastName.sendKeys("Marley");
-        email.sendKeys("someemailgmail.com");
+        firstName.sendKeys("Joseph");
+        lastName.sendKeys("Me");
+        email.sendKeys("sdfawerq.com");
         phone.sendKeys("this is not even a number");
         address1.sendKeys("same");
         address2.sendKeys("same");
-        city.sendKeys("Wakanda");
-        state.sendKeys("Oklahoma");
+        city.sendKeys("Dnipro");
+        state.sendKeys("Dniprooo");
         zip.sendKeys("zip");
-        country.sendKeys("DNR");
+        country.sendKeys("UKR");
         return this;
     }
 
-    public WelcomePage profileInformationTesting() {
+    public void profileInformationTesting() {
         Select languagePreference = new Select(this.languagePreference);
         Select favouriteCategory = new Select(this.accountFavouriteCategoryId);
         languagePreference.selectByIndex(languagePreference.getAllSelectedOptions().size() - 1);
@@ -128,6 +131,6 @@ public class RegistrationPage {
         myBannerCheckBox.click();
         myListCheckBox.click();
         saveAccButton.click();
-        return new WelcomePage(driver);
+//        return new WelcomePage(driver);
     }
 }

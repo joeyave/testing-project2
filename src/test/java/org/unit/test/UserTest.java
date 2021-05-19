@@ -33,7 +33,7 @@ public class UserTest {
     @Test
     public void addDogToACartSignedIn() {
         WelcomePage welcomePage = new WelcomePage(driver);
-        welcomePage.signInLink().signIn("Boaob", "1234");
+        welcomePage.signInLink().signIn("Joseph", "1234");
         CurrentAnimalPage dog = welcomePage.selectAnimal(2).selectAnimal();
         String dogDescription = dog.getDescription();
         ShoppingCartPage shoppingCart = dog.addToCart();
@@ -49,9 +49,9 @@ public class UserTest {
     @Test
     public void signOut() {
         WelcomePage welcomePage = new WelcomePage(driver);
-        welcomePage.signInLink().signIn("Boaob", "1234");
+        welcomePage.signInLink().signIn("Joseph", "1234");
         String welcomeMessage = welcomePage.getWelcomeMessage();
-        Assert.assertEquals("Welcome Ihow!", welcomeMessage);
+        Assert.assertEquals("Welcome Jos!", welcomeMessage);
         String welcomeMessageSignedOut = welcomePage.signOutLink().getWelcomeMessage();
         Assert.assertEquals("", welcomeMessageSignedOut);
     }

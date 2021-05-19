@@ -1,16 +1,12 @@
 package org.unit.test;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.unit.page.RegistrationPage;
-
-import java.util.concurrent.TimeUnit;
 
 public class RegistrationPageTest {
     private static final String url = "https://petstore.octoperf.com/actions/Account.action?newAccountForm=";
@@ -24,17 +20,18 @@ public class RegistrationPageTest {
         driver.manage().window().maximize();
     }
 
-
     @Test
     public void positiveTesting() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.userInformationTesting("Mike", "1234", " 1234").positiveAccountInformation().profileInformationTesting();
+        registrationPage.userInformationTesting("Joseph12", "1234", "1234").positiveAccountInformation().profileInformationTesting();
+        Assert.assertNotEquals(driver.getCurrentUrl(), url);
     }
 
     @Test
     public void negativeTesting() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.negativeUserInformation().negativeAccountInformation().profileInformationTesting();
+        Assert.assertEquals(registrationPage.exceptionHeader.getText(), "HTTP Status 500 – Internal Server Error");
     }
 
     @After
